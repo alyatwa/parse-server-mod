@@ -1085,11 +1085,11 @@ class DatabaseController {
 
 
           const publicuserPromise = this.loadSchema()
-      .then(schema => schema.enforceClassExists('_PublicUser'))
+      .then(schema => schema.enforceClassExists('PublicUser'))
     const privaterecordPromise = this.loadSchema()
-      .then(schema => schema.enforceClassExists('_PrivateRecord'))
+      .then(schema => schema.enforceClassExists('PrivateRecord'))
     const recordsPromise = this.loadSchema()
-      .then(schema => schema.enforceClassExists('_Records'))
+      .then(schema => schema.enforceClassExists('Records'))
 
 
 
@@ -1120,19 +1120,19 @@ class DatabaseController {
 
 
     const publicuserUniqueness = publicuserPromise
-      .then(() => this.adapter.ensureUniqueness('_PublicUser', publicuser, ['objectId']))
+      .then(() => this.adapter.ensureUniqueness('PublicUser', publicuser, ['objectId']))
       .catch(error => {
         logger.warn('Unable to ensure uniqueness for publicuser: ', error);
         throw error;
       });
     const privaterecordUniqueness = privaterecordPromise
-      .then(() => this.adapter.ensureUniqueness('_PrivateRecord', privaterecord, ['objectId']))
+      .then(() => this.adapter.ensureUniqueness('PrivateRecord', privaterecord, ['objectId']))
       .catch(error => {
         logger.warn('Unable to ensure uniqueness for private record: ', error);
         throw error;
       });
     const recordsUniqueness = recordsPromise
-      .then(() => this.adapter.ensureUniqueness('_Records', records, ['objectId']))
+      .then(() => this.adapter.ensureUniqueness('Records', records, ['objectId']))
       .catch(error => {
         logger.warn('Unable to ensure uniqueness for records: ', error);
         throw error;
