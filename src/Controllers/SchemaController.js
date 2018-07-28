@@ -38,10 +38,36 @@ const defaultColumns: {[string]: SchemaFields} = Object.freeze({
   _User: {
     "username":      {type:'String'},
     "password":      {type:'String'},
+    "img":           {type:'String'},
+    "ip":            {type:'String'},
+    "country":       {type:'String'},
+    "img":           {type:'File'},
+    "FCM":           {type:'String'},
     "email":         {type:'String'},
     "emailVerified": {type:'Boolean'},
-    "authData":      {type:'Object'}
+    "authData":      {type:'Object'},
+    "new":           {type:'Number'},
   },
+  
+  _PrivateRecord: {
+    "recordId":      {type:'String'},
+    "sender":        {type:'String'},
+    "file":           {type:'File'},
+    "receiverId":   {type:'String'}
+  },
+  
+   _PublicUser: {
+    "username":      {type:'String'},
+    "userId":      {type:'String'},
+    "img":           {type:'File'}
+  },
+  
+  _Records: {
+    "receiverID":      {type:'String'},
+    "receiver":      {type:'String'},
+    "file":           {type:'File'}
+  },
+  
   // The additional default columns for the _Installation collection (in addition to DefaultCols)
   _Installation: {
     "installationId":   {type:'String'},
@@ -143,7 +169,7 @@ const requiredColumns = Object.freeze({
   _Role: ["name", "ACL"]
 });
 
-const systemClasses = Object.freeze(['_User', '_Installation', '_Role', '_Session', '_Product', '_PushStatus', '_JobStatus', '_JobSchedule', '_Audience']);
+const systemClasses = Object.freeze(['_User', '_PublicUser', '_Records', '_PrivateRecord', '_Installation', '_Role', '_Session', '_Product', '_PushStatus', '_JobStatus', '_JobSchedule', '_Audience']);
 
 const volatileClasses = Object.freeze(['_JobStatus', '_PushStatus', '_Hooks', '_GlobalConfig', '_JobSchedule', '_Audience']);
 
