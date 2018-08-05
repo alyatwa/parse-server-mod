@@ -38,7 +38,6 @@ const defaultColumns: {[string]: SchemaFields} = Object.freeze({
   _User: {
     "username":      {type:'String'},
     "password":      {type:'String'},
-    "img":           {type:'String'},
     "ip":            {type:'String'},
     "country":       {type:'String'},
     "img":           {type:'File'},
@@ -56,10 +55,21 @@ const defaultColumns: {[string]: SchemaFields} = Object.freeze({
     "receiverId":   {type:'String'}
   },
   
-   _PublicUser: {
+  _PublicUser: {
     "username":      {type:'String'},
     "userId":      {type:'String'},
     "img":           {type:'File'}
+  },
+  _App: {
+    "lang":         {type:'String'},
+    "name":         {type:'String'}
+  },
+  _SpamRecords: {
+    "receiverID":      {type:'String'},
+    "receiver":      {type:'String'},
+    "file":           {type:'File'},
+    "recordId":      {type:'String'},
+    "sender":        {type:'String'}
   },
   
   _Records: {
@@ -169,7 +179,7 @@ const requiredColumns = Object.freeze({
   _Role: ["name", "ACL"]
 });
 
-const systemClasses = Object.freeze(['_User', '_PublicUser', '_Records', '_PrivateRecord', '_Installation', '_Role', '_Session', '_Product', '_PushStatus', '_JobStatus', '_JobSchedule', '_Audience']);
+const systemClasses = Object.freeze(['_User', '_SpamRecords', '_App', '_PublicUser', '_Records', '_PrivateRecord', '_Installation', '_Role', '_Session', '_Product', '_PushStatus', '_JobStatus', '_JobSchedule', '_Audience']);
 
 const volatileClasses = Object.freeze(['_JobStatus', '_PushStatus', '_Hooks', '_GlobalConfig', '_JobSchedule', '_Audience']);
 
