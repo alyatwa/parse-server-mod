@@ -1063,27 +1063,27 @@ class DatabaseController {
 
     const publicuser = {
       fields: { ...SchemaController.defaultColumns._Default,
-        ...SchemaController.defaultColumns._PublicUser
+        ...SchemaController.defaultColumns.PublicUser
       }
     };
     const app = {
       fields: { ...SchemaController.defaultColumns._Default,
-        ...SchemaController.defaultColumns._App
+        ...SchemaController.defaultColumns.App
       }
     };
     const spamRecords = {
       fields: { ...SchemaController.defaultColumns._Default,
-        ...SchemaController.defaultColumns._SpamRecords
+        ...SchemaController.defaultColumns.SpamRecords
       }
     };
     const privaterecord = {
       fields: { ...SchemaController.defaultColumns._Default,
-        ...SchemaController.defaultColumns._PrivateRecord
+        ...SchemaController.defaultColumns.PrivateRecord
       }
     };
     const records = {
       fields: { ...SchemaController.defaultColumns._Default,
-        ...SchemaController.defaultColumns._Records
+        ...SchemaController.defaultColumns.Records
       }
     };
 
