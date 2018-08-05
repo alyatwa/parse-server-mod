@@ -1151,14 +1151,14 @@ class DatabaseController {
         logger.warn('Unable to ensure uniqueness for records: ', error);
         throw error;
       });
-    const appUniqueness = privaterecordPromise
-      .then(() => this.adapter.ensureUniqueness('PrivateRecord', app, ['objectId']))
+    const appUniqueness = appPromise
+      .then(() => this.adapter.ensureUniqueness('App', app, ['objectId']))
       .catch(error => {
         logger.warn('Unable to ensure uniqueness for private record: ', error);
         throw error;
       });
-    const spamUniqueness = recordsPromise
-      .then(() => this.adapter.ensureUniqueness('Records', spamRecords, ['objectId']))
+    const spamUniqueness = spamPromise
+      .then(() => this.adapter.ensureUniqueness('SpamRecords', spamRecords, ['objectId']))
       .catch(error => {
         logger.warn('Unable to ensure uniqueness for records: ', error);
         throw error;
