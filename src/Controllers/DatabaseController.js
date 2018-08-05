@@ -1063,27 +1063,27 @@ class DatabaseController {
 
     const publicuser = {
       fields: { ...SchemaController.defaultColumns._Default,
-        ...SchemaController.defaultColumns.PublicUser
+        ...SchemaController.defaultColumns._PublicUser
       }
     };
     const app = {
       fields: { ...SchemaController.defaultColumns._Default,
-        ...SchemaController.defaultColumns.App
+        ...SchemaController.defaultColumns._App
       }
     };
     const spamRecords = {
       fields: { ...SchemaController.defaultColumns._Default,
-        ...SchemaController.defaultColumns.SpamRecords
+        ...SchemaController.defaultColumns._SpamRecords
       }
     };
     const privaterecord = {
       fields: { ...SchemaController.defaultColumns._Default,
-        ...SchemaController.defaultColumns.PrivateRecord
+        ...SchemaController.defaultColumns._PrivateRecord
       }
     };
     const records = {
       fields: { ...SchemaController.defaultColumns._Default,
-        ...SchemaController.defaultColumns.Records
+        ...SchemaController.defaultColumns._Records
       }
     };
 
@@ -1095,15 +1095,15 @@ class DatabaseController {
 
 
     const publicuserPromise = this.loadSchema()
-      .then(schema => schema.enforceClassExists('PublicUser'))
+      .then(schema => schema.enforceClassExists('_PublicUser'))
     const privaterecordPromise = this.loadSchema()
-      .then(schema => schema.enforceClassExists('PrivateRecord'))
+      .then(schema => schema.enforceClassExists('_PrivateRecord'))
     const recordsPromise = this.loadSchema()
-      .then(schema => schema.enforceClassExists('Records'))
+      .then(schema => schema.enforceClassExists('_Records'))
     const appPromise = this.loadSchema()
-      .then(schema => schema.enforceClassExists('App'))
+      .then(schema => schema.enforceClassExists('_App'))
     const spamPromise = this.loadSchema()
-      .then(schema => schema.enforceClassExists('SpamRecords'))
+      .then(schema => schema.enforceClassExists('_SpamRecords'))
 
 
 
@@ -1134,39 +1134,35 @@ class DatabaseController {
 
 
     const publicuserUniqueness = publicuserPromise
-      .then(() => this.adapter.ensureUniqueness('PublicUser', publicuser, ['objectId']))
+      .then(() => this.adapter.ensureUniqueness('_PublicUser', publicuser, ['objectId']))
       .catch(error => {
         logger.warn('Unable to ensure uniqueness for publicuser: ', error);
         throw error;
       });
     const privaterecordUniqueness = privaterecordPromise
-      .then(() => this.adapter.ensureUniqueness('PrivateRecord', privaterecord, ['objectId']))
+      .then(() => this.adapter.ensureUniqueness('_PrivateRecord', privaterecord, ['objectId']))
       .catch(error => {
         logger.warn('Unable to ensure uniqueness for private record: ', error);
         throw error;
       });
     const recordsUniqueness = recordsPromise
-      .then(() => this.adapter.ensureUniqueness('Records', records, ['objectId']))
+      .then(() => this.adapter.ensureUniqueness('_Records', records, ['objectId']))
       .catch(error => {
         logger.warn('Unable to ensure uniqueness for records: ', error);
         throw error;
       });
     const appUniqueness = appPromise
-      .then(() => this.adapter.ensureUniqueness('App', app, ['objectId']))
+      .then(() => this.adapter.ensureUniqueness('_App', app, ['objectId']))
       .catch(error => {
-        logger.warn('Unable to ensure uniqueness for private record: ', error);
+        logger.warn('Unable to ensure uniqueness for app: ', error);
         throw error;
       });
     const spamUniqueness = spamPromise
-      .then(() => this.adapter.ensureUniqueness('SpamRecords', spamRecords, ['objectId']))
+      .then(() => this.adapter.ensureUniqueness('_SpamRecords', spamRecords, ['objectId']))
       .catch(error => {
-        logger.warn('Unable to ensure uniqueness for records: ', error);
+        logger.warn('Unable to ensure uniqueness for spamRecords: ', error);
         throw error;
       });
-
-
-
-
 
 
 
